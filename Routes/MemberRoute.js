@@ -8,5 +8,6 @@ const router = express.Router();
 router.post("/addmember", addmember);
 router.get("/getAllMember", getAllMember);
 router.get("/getMember/:id", getMember);
+//routes
 
 export default router;
