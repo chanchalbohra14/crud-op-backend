@@ -1,13 +1,15 @@
 import express from "express";
 import {
-  addmember,
-  getAllMember,
+  CreateMember,
+  deleteMember,
   getMember,
+  getMembers,
+  updateMember,
 } from "../Controllers/MemberController.js";
 const router = express.Router();
-router.post("/addmember", addmember);
-router.get("/getAllMember", getAllMember);
-router.get("/getMember/:id", getMember);
-//routes
-
+router.post("/createmember", CreateMember);
+router.get("/getmembers", getMembers);
+router.get("/getmember/:id", getMember);
+router.patch("/updatemember/:id", updateMember);
+router.delete("/deletemember/:id", deleteMember);
 export default router;

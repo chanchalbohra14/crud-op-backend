@@ -1,50 +1,27 @@
 import mongoose from "mongoose";
-const MemberSchema = mongoose.Schema(
-  {
-    firstName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
-    lastName: {
-      type: String,
-      trim: true,
-    },
-    age: {
-      type: Number,
-    },
-    gender: {
-      type: String,
-      enum: ["Male", "Female", "Other"],
-    },
-
-    phone: {
-      type: Number,
-    },
-    email: {
-      type: String,
-      match: [
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        "Please enter a valid Email",
-      ],
-    },
-
-    city: {
-      type: String,
-    },
-    state: {
-      type: String,
-    },
-    country: {
-      type: String,
-    },
+const MemberSchema = mongoose.Schema({
+  Name: {
+    type: String,
+    required: true,
+    trim: true,
   },
-
-  {
-    timestamps: true,
-    minimize: false,
-  }
-);
+  Age: {
+    type: Number,
+  },
+  Gender: {
+    type: String,
+    enum: ["female", "male", "others"],
+  },
+  Course: {
+    type: String,
+    enum: ["bca", "bba", "bcom"],
+  },
+  Contact: {
+    type: Number,
+  },
+  Address: {
+    type: String,
+  },
+});
 const Member = mongoose.model("member", MemberSchema);
 export default Member;

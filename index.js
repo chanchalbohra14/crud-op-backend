@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
   res.send("<p>Welcome to server</p>");
 });
 
-app.use("/members", MemberRoute);
+app.use("/member", MemberRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
