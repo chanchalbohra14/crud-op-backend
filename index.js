@@ -7,13 +7,12 @@ import MemberRoute from "./Routes/MemberRoute.js";
 myDb();
 
 const app = express();
-const PORT = 8000;
-
+const PORT = process.env.PORT || 8000;
 app.use(express.json());
 //crud op get read, post create,patch/put update,delete delete
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173", "https://crud-op-frontend.vercel.app/"],
     methods: ["GET", "POST", "PUT", "HEAD", "PATCH", "DELETE"],
     credentials: true,
   })
