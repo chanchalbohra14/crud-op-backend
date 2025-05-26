@@ -1,14 +1,23 @@
 import mongoose from "mongoose";
+
 mongoose.set("strictQuery", true);
+
 const myDb = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGOOSEURI);
-    console.log("process env", process.env.MONGOOSEURI);
-    console.log(
-      `mongobd connection ,${conn.connection.host}/${process.env.MONGOOSEURI}`
-    );
+    if (!process.env.MONGOOSEURI) {
+      throw new Error("MONGOOSEURI environment variable is not set");
+    }
+
+    const conn = await mongoose.connect(process.env.MONGOOSEURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log(`MongoDB connected: ${conn.connection.host}`);
   } catch (error) {
-    process.exit(1);
+    console.error("MongoDB connection failed:", error.message);
+    process.exit(1); // exit process with failure
   }
 };
+
 export default myDb;
